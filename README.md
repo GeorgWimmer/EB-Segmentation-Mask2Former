@@ -11,7 +11,7 @@ The other needed python libaries are standard libaries such as numpy, PIL, matpl
 # Apply trained Mask2Former to segment wound regions in images of EB patients
 1) open an python editor (e.g. PyCharm, Jupyter Notebook,... )
 2) go to the directory where you downloaded the code or import the directory
-3) use the following code entry:<br>
+3) use the following code entry: <br>
     Param = {} <br>
     Param['OUTPUT_DIR'] =  'path where the segmentation masks are written out' <br>
     Param['IMAGE_DIR'] = 'path to the folder with the images to be segmented (jpg images)' <br>
@@ -25,7 +25,7 @@ The other needed python libaries are standard libaries such as numpy, PIL, matpl
 1) open an python editor (e.g. PyCharm, Jupyter Notebook,... )
 2) go to the directory where you downloaded the code or import the directory
 3) images and the corresponding ground truth masks must be named in the following way: Images:  'Pat' + PatientID + '_' + ImageID + '_' + AnnotatorID +.jpg (e.g.: 'Pat01_a19A_christian.jpg'). Masks: The same as the images but they have to be png images (e.g.: 'Pat01_a19A_christian.png') 
-4) use the following code entry:<br>
+4) use the following code entry: <br>
     import EB_mask2former <br>
     Param={} <br>
     Param['MASK_DIR'] = 'path to the file with the manually segmented ground truth (png grayscale images)' <br>
