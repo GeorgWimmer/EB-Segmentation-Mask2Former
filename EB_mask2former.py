@@ -150,10 +150,6 @@ def EB_seg(params):
     dataset=WoundDataset_mask2former(Param['IMAGE_DIR'], Param['MASK_DIR'], processor, CLASS_VALUE_MAP,  transform=transform, ignore_index=Param['IGNORE_INDEX'], Imagename_is_Maskname=Param['Imagename_is_Maskname'])
     test_indices_per_fold, train_indices_per_fold=get_kfolds(Param['NR_FOLDS'], dataset)
 
-    overall_dice = []
-    overall_iou = []
-    Dice_per_class = []
-    IOU_per_class = []
 
     for foldnr in range(Param['Start_FoldNr'], Param['NR_FOLDS']):
         print(f"\n  START FOLD NR {foldnr}")
@@ -254,31 +250,6 @@ def EB_seg(params):
 
 
 
-
-        overall_dice.append(fold_overall_dice)
-        overall_iou.append(fold_overall_iou)
-        Dice_per_class.append(fold_Dice_per_class)
-        IOU_per_class.append(fold_IOU_per_class)
-
-
-    mean_dice = np.mean(overall_dice)
-    mean_iou = np.mean(overall_iou)
-    mean_Dice_per_class=np.mean(Dice_per_class,0)
-    mean_IOU_per_class=np.mean(IOU_per_class,0)
-    results_summary = []
-    message=f"mean overall Dice: {mean_dice}"
-    print(message)
-    results_summary.append(message)
-    message=f"mean overall IOU: {mean_iou}"
-    print(message)
-    results_summary.append(message)
-    message=f"mean Dice per class : {mean_Dice_per_class}"
-    print(message)
-    results_summary.append(message)
-    message=f"mean IOU per class : {mean_IOU_per_class}"
-    print(message)
-    results_summary.append(message)
-
     # Write only final summary to file
     results_summary_without_folds, cm_fig = get_prediction_all_metrics_whole_dataset(Param['MASK_DIR'], Param['OUTPUT_DIR'],
                                                                          Param['LABEL_NAMES'], Imagename_is_Maskname=Param['Imagename_is_Maskname'])
@@ -291,7 +262,7 @@ def EB_seg(params):
         for line in results_summary_without_folds:
             log.write(line + "\n")
 
-    return mean_dice, mean_Dice_per_class, mean_iou, mean_IOU_per_class
+    return 
 
 
 
