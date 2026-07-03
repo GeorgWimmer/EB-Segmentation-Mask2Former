@@ -14,11 +14,17 @@ The other needed python libaries are standard libaries such as numpy, PIL, matpl
 3) use the following code entry:
 
     Param['OUTPUT_DIR'] =  'path where the segmentation masks are written out'
+   
     Param['IMAGE_DIR'] = 'path to the folder where the images are that should be segmented'
-    Param['INPUT_SIZE'] = (2048, 2048) #if the images are smaller than 2048 x 2048 then use a smaller input size for the patchwise segmentation of the                             image (sliding window inference)
+   
+    Param['INPUT_SIZE'] = (2048, 2048) #if the images are smaller than 2048 x 2048 then use a smaller input size for the patchwise segmentation of             the image (sliding window inference)
+   
     Param['RESIZE'] = {'height': 1024, 'width': 1024} # if you make the input size smaller, then also make this parameter smaller by the same factor 
+
     Param['DEVICE'] = 'cuda:0' #The gpu device that will be used. If you have no gpu then use Param['DEVICE'] = 'cpu'
+
     import EB_mask2former
+   
     EB_mask2former.EB_validate(Param)
 
 # Evaluate and/or train your own Mask2Former model to segment EB images
