@@ -2,9 +2,9 @@
 Code to train and evaluate the Mask2Former architecture for EB image segmentation
 
 # Needed python packages:
-torch version 2.6.0+cu124, but others versions should work as well
-torchvision 0.21.0+cu124, but other versions should work as well
-Hugging Face's transformers library
+torch version 2.6.0+cu124, but others versions should work as well <br>
+torchvision 0.21.0+cu124, but other versions should work as well <br>
+Hugging Face's transformers library 
 For training combined with evaluation of the model, the cv2 package is  needed (EB_seg in EB_mask2former.py), but not for generating segmentation masks from images (EB_validate in EB_mask2former.py)
 The other needed python libaries are standard libaries such as numpy, PIL, matplotlib,...
 
