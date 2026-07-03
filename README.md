@@ -30,11 +30,11 @@ To ensure the scripts parse your data correctly, images and their corresponding 
   * *Example:* `Pat01_a19A_annotatorA.png`
 
 
----
+
 
 ## Provided Trained Model
 We provide a pre-trained weights file named **`mask2former_wound_segmentation_fold0.pth`**. This model was trained on the first fold (Fold 0) of the 4-fold cross-validation workflow described in our paper. 
----
+* **Download:** You can download the model weights directly from [cosy.sbg.ac.at](http://www.cosy.sbg.ac.at/~gwimmer/mask2former_wound_segmentation_fold0.pth).
 
 ## Usage Guide
 
