@@ -31,8 +31,8 @@ The other needed python libaries are standard libaries such as numpy, PIL, matpl
     Param['MASK_DIR'] = 'path to the file with the manually segmented ground truth (png grayscale images)' <br>
     Param['OUTPUT_DIR']= 'path to the folder where the segmentations masks are written out as well as segmentation results' <br>
     Param['IMAGE_DIR'] = 'path to the folder with the EB wound images (jpg images)'  # <br>
-    Param['DEVICE']='cuda:0' #The gpu device that will be used. If you have no gpu then use Param['DEVICE'] = 'cpu'<br>
-    Param['BATCH_SIZE'] = 2
+    Param['DEVICE']='cuda:0' #The gpu device that will be used <br>
+    Param['BATCH_SIZE'] = 2 <br>
     Param['accumulation_steps']=2 #to artificiall increase the batch size by this factor without needing more gpu memory  (if not needed then set to 1) <br>
     Param['NR_FOLDS']=4 # Number of folds for k-fold cross validation <br>
     Param['LABEL_NAMES']= ['Background,qual,creme', 'Unaffected', '(Re-)Epithelialized', 'Blister', 'Crust', 'Erosions', 'Tumor'] #Nmes of the different classes that are to be segmented <br>
