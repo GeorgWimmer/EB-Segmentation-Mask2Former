@@ -17,8 +17,7 @@ We used the following GPU in our experients: NVIDIA GeForce RTX 3090 Ti with 24G
     Param = {} <br>
     Param['OUTPUT_DIR'] =  'path where the segmentation masks are written out' <br>
     Param['IMAGE_DIR'] = 'path to the folder with the images to be segmented (jpg images)' <br>
-    Param['INPUT_SIZE'] = (2048, 2048) #if the images are smaller than 2048 x 2048 then use a smaller input size for the patchwise segmentation of             the image (sliding window inference) <br>
-    Param['RESIZE'] = {'height': 1024, 'width': 1024} # if you make the input size smaller, then also make this parameter smaller by the same factor <br>
+    Param['INPUT_SIZE'] = (2048, 2048) # the image is processed patch-wise and the input size controls the patch size that is used for the sliding window inference. If the images are smaller than 2048 x 2048, then use a smaller input size for the patchwise segmentation of the image (sliding window inference) <br>
     Param['DEVICE'] = 'cuda:0' #The gpu device that will be used. If you have no gpu then use Param['DEVICE'] = 'cpu' <br>
     Param['NETDIR']= 'path to the trained model that is provided' (trained in fold 1 from the 4-fold cross validation in our paper)  <br>
     import EB_mask2former<br>
@@ -39,13 +38,15 @@ We used the following GPU in our experients: NVIDIA GeForce RTX 3090 Ti with 24G
     Param['accumulation_steps']=2 #to artificiall increase the batch size by this factor without needing more gpu memory  (if not needed then set to 1) <br>
     Param['NR_FOLDS']=4 # Number of folds for k-fold cross validation <br>
     Param['LABEL_NAMES']= ['Background,qual,creme', 'Unaffected', '(Re-)Epithelialized', 'Blister', 'Crust', 'Erosions', 'Tumor'] #Names of the different classes that are to be segmented <br>
+    Param['INPUT_SIZE'] =(1024, 1024) # During training a patch of this size is extracted from  the image (after image augmentation)  at a random position and the patch is then fed to the model. During evaluation, this is the patch size used for sliding window inference <br>
+    Param['RESIZE']={'height': 512, 'width': 512} # intern resizing done by  the Mask2Former framework. <br>
     mean_dice, mean_Dice_per_class, mean_iou, mean_IOU_per_class = EB_mask2former.EB_seg(Param) <br>
 
   6) In our paper, we evaluated the Mask2Former with a bigger input size (sliding window inference with bigger patch size) than used for training. This  increased the results and the gpu memory requirements for evaluation are smaller than for training. In this case, use the same code as for training and evaluation, but add the follwing parameters: <br>
          Param['eval_only']=True <br>
          Param['NET_DIR'] = 'path to the trained models' <br>
          Param['INPUT_SIZE'] = (2048, 2048) #e.g. increase the default input size by factor 2 <br>
-         Param['RESIZE'] ={'height': 1024, 'width': 1024}  #e.g. increase the intern resizing of the Mask2Former model by  factor 2 <br>
+         Param['RESIZE'] ={'height': 1024, 'width': 1024}  #e.g. increase the intern resizing done by  the Mask2Former framework by  factor 2 <br>
 
          
          
