@@ -1,5 +1,5 @@
 # EB-Segmentation-Mask2Former
-Code to train and evaluate the Mask2Former architecture for EB image segmentation for the paper 'AI-based segmentation of wound types caused by Epidermolysis Bullosa'. Link to the paper will be following after acceptance. Please cite the paper if you use the code.
+Code to train and evaluate the Mask2Former architecture for EB image segmentation for the paper 'AI-based segmentation of wound types caused by Epidermolysis Bullosa'. Link to the paper will be following after acceptance. Please cite the paper if you use the code in a publication.
 
 # Needed python packages:
 torch version 2.6.0+cu124, but others versions should work as well <br>
@@ -41,8 +41,7 @@ We used the following GPU in our experients: NVIDIA GeForce RTX 3090 Ti with 24G
     Param['LABEL_NAMES']= ['Background,qual,creme', 'Unaffected', '(Re-)Epithelialized', 'Blister', 'Crust', 'Erosions', 'Tumor'] #Names of the different classes that are to be segmented <br>
     mean_dice, mean_Dice_per_class, mean_iou, mean_IOU_per_class = EB_mask2former.EB_seg(Param) <br>
 
-  5) Use additional parameters as described in the code (EB_seg in EB_mask2former)
-  6) In our paper, we evaluated the Mask2Former with a bigger input size than used for training. This distinctly increased the results and the gpu memory requirements for evaluation are smaller than for training. In this case, use the same code as for training and evaluation, but add the follwing parameters: <br>
+  6) In our paper, we evaluated the Mask2Former with a bigger input size (sliding window inference with bigger patch size) than used for training. This  increased the results and the gpu memory requirements for evaluation are smaller than for training. In this case, use the same code as for training and evaluation, but add the follwing parameters: <br>
          Param['eval_only']=True <br>
          Param['NET_DIR'] = 'path to the trained models' <br>
          Param['INPUT_SIZE'] = (2048, 2048) #e.g. increase the default input size by factor 2 <br>
