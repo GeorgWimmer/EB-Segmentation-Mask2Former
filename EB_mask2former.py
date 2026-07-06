@@ -255,9 +255,9 @@ def EB_seg(params):
                                                                          Param['LABEL_NAMES'], Imagename_is_Maskname=Param['Imagename_is_Maskname'])
     cm_fig.savefig(os.path.join(Param['OUTPUT_DIR'],'ConfusionMatrix.png'), dpi=300)
     log_file = os.path.join(Param['OUTPUT_DIR'], "results.txt")
-    with open(log_file, "a") as log:
+    with open(log_file, "a", encoding="utf-8") as log:
         log.write("\n--- Validation Summary over all folds ---\n")
-        for line in results_summary:
+        for line in results_summary: 
             log.write(line + "\n")
         for line in results_summary_without_folds:
             log.write(line + "\n")
